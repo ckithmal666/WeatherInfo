@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Minified version -->
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+
+<title>WeatherInfo</title>
+<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+<style type="text/css">
+.container {
+
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+grid-gap: 16px;
+
+}
+
+.no-mg-bottom {
+margin-bottom: 0px;
+margin-top: 5px;
+}
+
+</style>
+</head>
+<body>
+	<header>
+		<nav align="center"><a href='home/'>HOME</a> | <a href='prediction/'>WEATHER PREDICTIONS</a> | <a href='about/'>ABOUT</a></nav>
+		<span> Hello, {{request.user}}</span>
+		<span><a href="{% url 'logout' %}">Logout</a></span>
+		<h3>Weather Forecast</h3>
+	</header>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="city1" placeholder="City1">
+        
+        <button type="submit">Forcast</button>
+    </form>
+    <div>
+        {% if weather_data1 %}
+        <div>
+            {% include 'city_weather.html' with weather_data=weather_data1 daily_forecasts=daily_forecasts1 %}
+        </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+        {% endif %}
+    </div>
+    <footer>
+        <p>Weather App  by Chathura Kithmal</p>
+      </footer>
+</body>
+
+
+</html>
